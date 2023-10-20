@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Crear una nueva página de perfil{% endblock %}
+{% block content %}
+
+    
+{% if user.is_authenticated %}
+	<h1>Crear página de perfil...</h1>
+	<br/><br/>
+
+	<div class="form-group">
+<form method="POST" enctype="multipart/form-data">
+			{% csrf_token %}
+
+			{{ form.as_p }}
+			<button class="btn btn-secondary"> Crear página de perfil...</button>
+	</div>
+
+	
+
+{% else %}
+
+¡No tienes permitido estar aquí! (y tú lo sabes...)
+
+{% endif %}
+
+
+
+{% endblock %}

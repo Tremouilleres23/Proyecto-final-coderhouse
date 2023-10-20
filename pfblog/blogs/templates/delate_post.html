@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Eliminar publicación de blog{% endblock %}
+{% block content %}
+
+    
+{% if user.is_authenticated %}
+	{% if user.id == post.author.id %}
+		<h1>Eliminar Post...</h1>
+		<br/><br/>
+		<h3>Eliminar: {{ post.title }}</h3>
+
+		<br/>
+		<div class="form-group">
+			<form method="POST">
+				{% csrf_token %}
+				<strong>Estas seguro?!</strong><br/><br/>
+				<button class="btn btn-secondary">Eliminar Post!</button>
+		</div>
+		{% else %}
+            ¡No tienes permitido estar aquí! (y tú lo sabes...)
+		{% endif %}
+
+{% else %}
+
+¡No tienes permitido estar aquí! (y tú lo sabes...)
+
+{% endif %}
+
+
+
+{% endblock %}
